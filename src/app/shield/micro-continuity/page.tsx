@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { FileText, CheckCircle2, AlertCircle, Users, Download } from 'lucide-react'
 import NewsletterCTA from '@/components/NewsletterCTA'
+import EmailSignupForm from '@/components/EmailSignupForm'
 
 export const metadata: Metadata = {
   title: 'Micro-Continuity Planning — The Business Continuity Kit',
@@ -270,7 +271,25 @@ export default function MicroContinuityPage() {
         </div>
       </section>
 
+      {/* Gated micro-continuity kit CTA */}
+      <section className="py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl border border-gray-100 p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Download the Micro-Continuity Kit</h3>
+            <p className="text-gray-600 mb-6">Get the full 5-document kit (email required). The on-page article remains free — this download contains the ready-to-use templates.</p>
+            <EmailSignupForm
+              variant="stacked"
+              buttonText="Get the kit"
+              placeholder="your@email.com"
+              successMessage="Thanks — your kit is ready"
+              leadMagnetFile="/downloads/micro-continuity/micro-continuity-kit.pdf"
+            />
+          </div>
+        </div>
+      </section>
+
       <NewsletterCTA />
     </div>
   )
 }
+
