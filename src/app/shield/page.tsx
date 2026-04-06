@@ -8,6 +8,11 @@ import {
   Building,
   TrendingDown,
   Heart,
+  DollarSign,
+  AlertTriangle,
+  Lightbulb,
+  Lock,
+  Zap,
 } from 'lucide-react'
 import CategoryHub from '@/components/CategoryHub'
 
@@ -86,6 +91,66 @@ export default function TheShieldPage() {
           href: '/shield/mental-health',
           icon: Heart,
           gradient: 'from-teal-600 to-emerald-400',
+        },
+        {
+          title: 'Tax Efficiency & Compliance',
+          description:
+            'Minimize your tax burden legally. Deductions, business structure, and quarterly planning you should do now.',
+          href: '/shield/tax-efficiency',
+          icon: Receipt,
+          gradient: 'from-amber-500 to-orange-600',
+          badge: 'Strategy',
+        },
+        {
+          title: 'Concentration Risk',
+          description:
+            'Audit your exposure. One client failure or platform change should not kill your business.',
+          href: '/shield/concentration-risk',
+          icon: AlertTriangle,
+          gradient: 'from-emerald-600 to-teal-700',
+        },
+        {
+          title: 'Pricing for Protection',
+          description:
+            'Price from a position of strength. Use this formula to protect margin, taxes, and sick days.',
+          href: '/shield/pricing-protection',
+          icon: DollarSign,
+          gradient: 'from-amber-400 to-orange-500',
+          badge: 'Formula',
+        },
+        {
+          title: 'Intellectual Property',
+          description:
+            'Protect your unique methods, frameworks, and brand from being copied.',
+          href: '/shield/intellectual-property',
+          icon: Lightbulb,
+          gradient: 'from-orange-500 to-amber-600',
+        },
+        {
+          title: 'Digital Resilience',
+          description:
+            'Backups, encryption, and account security. Survive a laptop failure or data breach in 7 days.',
+          href: '/shield/digital-resilience',
+          icon: Lock,
+          gradient: 'from-cyan-600 to-teal-700',
+          badge: '7-Day Setup',
+        },
+        {
+          title: 'Platform Risk',
+          description:
+            'Map your dependencies. Know what breaks your business if a platform fails or bans you.',
+          href: '/shield/platform-risk',
+          icon: AlertTriangle,
+          gradient: 'from-rose-600 to-orange-500',
+        },
+        {
+          title: 'Systems & SOPs',
+          description:
+            'Document your workflows. Build systems that work without you, so you can scale or rest.',
+          href: '/shield/systems-sops',
+          icon: Zap,
+          gradient: 'from-slate-600 to-slate-800',
+          badge: 'Playbook',
         },
       ]}
     />
