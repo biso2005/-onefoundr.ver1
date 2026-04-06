@@ -1,82 +1,159 @@
 export type ShieldHub = {
-  id: string
   title: string
+  description: string
   href: string
-  description?: string
-  badge?: string
+  track: 'gateway' | 'financial-protection' | 'legal-protection' | 'operational-protection'
   isMoat?: boolean
+  badge?: string
 }
 
 export type ShieldTrack = {
   id: string
-  number: number
+  number: string
   title: string
-  description?: string
+  description: string
   hubs: ShieldHub[]
 }
 
 export const pillarMeta = {
-  id: 'shield',
   title: 'The Shield',
+  navLabel: 'Stay Protected',
   tagline: 'Stay Protected',
   description:
-    "Protect your income, your business, and your sanity. The boring stuff that saves you later.",
+    'Protect your income, your business, and your sanity. The boring stuff that saves you later.',
   gradient: 'from-teal-600 to-teal-800',
+  intro:
+    'Solo founders are exposed in ways employees never are. One bad client, one missed tax payment, one health crisis — and the whole thing can collapse. The Shield is not glamorous. But it is what lets you keep going when things get hard.',
 }
 
 export const gatewayHub: ShieldHub = {
-  id: 'founder-first',
   title: 'The Founder First',
-  href: '/shield/founder-first',
   description:
     'Protect the founder first — mental health as business continuity and building solo benefits.',
+  href: '/shield/founder-first',
+  track: 'gateway',
+  badge: 'Start Here',
 }
 
 export const tracks: ShieldTrack[] = [
   {
     id: 'financial-protection',
-    number: 1,
+    number: '01',
     title: 'Financial Protection',
     description: 'Getting paid, cash flow, tax efficiency, concentration and pricing for protection.',
     hubs: [
-      { id: 'getting-paid', title: 'Getting Paid', href: '/shield/getting-paid', description: 'The Getting Paid Playbook', isMoat: true },
-      { id: 'cash-flow', title: 'Cash Flow Management', href: '/shield/cash-flow' },
-      { id: 'tax-efficiency', title: 'Tax Efficiency & Compliance', href: '/shield/tax-efficiency' },
-      { id: 'concentration-risk', title: 'Single Client & Platform Risk', href: '/shield/concentration-risk' },
-      { id: 'pricing-protection', title: 'Pricing for Protection', href: '/shield/pricing-protection' },
+      {
+        title: 'Getting Paid',
+        description: 'The Getting Paid Playbook',
+        href: '/shield/getting-paid',
+        track: 'financial-protection',
+        isMoat: true,
+      },
+      {
+        title: 'Cash Flow Management',
+        description: 'Manage cash flow, runway, and forecasting.',
+        href: '/shield/cash-flow',
+        track: 'financial-protection',
+      },
+      {
+        title: 'Tax Efficiency & Compliance',
+        description: 'Minimize tax liability and stay compliant.',
+        href: '/shield/tax-efficiency',
+        track: 'financial-protection',
+      },
+      {
+        title: 'Single Client & Platform Risk',
+        description: 'Avoid putting all risk on one client or platform.',
+        href: '/shield/concentration-risk',
+        track: 'financial-protection',
+      },
+      {
+        title: 'Pricing for Protection',
+        description: 'Price your offers to include built-in buffer.',
+        href: '/shield/pricing-protection',
+        track: 'financial-protection',
+      },
     ],
   },
   {
     id: 'legal-protection',
-    number: 2,
+    number: '02',
     title: 'Legal & Business Protection',
     description: 'Contracts, insurance, IP and emerging legal risks.',
     hubs: [
-      { id: 'contracts', title: 'Contracts & Agreements', href: '/shield/contracts' },
-      { id: 'business-insurance', title: 'Business Insurance', href: '/shield/business-insurance' },
-      { id: 'legal-risk-library', title: 'The Solo Legal Risk Library', href: '/shield/legal-risk-library', isMoat: true },
-      { id: 'intellectual-property', title: 'Intellectual Property', href: '/shield/intellectual-property' },
+      {
+        title: 'Contracts & Agreements',
+        description: 'Client agreements, NDAs, and legal templates.',
+        href: '/shield/contracts',
+        track: 'legal-protection',
+      },
+      {
+        title: 'Business Insurance',
+        description: 'What cover you actually need as a solo founder.',
+        href: '/shield/business-insurance',
+        track: 'legal-protection',
+      },
+      {
+        title: 'The Solo Legal Risk Library',
+        description: 'AI risks, IP protection, platform dependencies, cross-border legal.',
+        href: '/shield/legal-risk-library',
+        track: 'legal-protection',
+        isMoat: true,
+      },
+      {
+        title: 'Intellectual Property',
+        description: 'Protect your frameworks, templates, and brand.',
+        href: '/shield/intellectual-property',
+        track: 'legal-protection',
+      },
     ],
   },
   {
     id: 'operational-protection',
-    number: 3,
+    number: '03',
     title: 'Operational Protection',
     description: 'Continuity, digital resilience, platform risk and systems/SOPs for protection.',
     hubs: [
-      { id: 'micro-continuity', title: 'Micro-Continuity Planning', href: '/shield/micro-continuity', isMoat: true },
-      { id: 'digital-resilience', title: 'Digital Resilience & Redundancy', href: '/shield/digital-resilience' },
-      { id: 'platform-risk', title: 'Platform & Dependency Risk', href: '/shield/platform-risk' },
-      { id: 'systems-sops', title: 'Systems & SOPs for Protection', href: '/shield/systems-sops' },
+      {
+        title: 'Micro-Continuity Planning',
+        description: 'The 5-document kit to keep your business running if you cannot.',
+        href: '/shield/micro-continuity',
+        track: 'operational-protection',
+        isMoat: true,
+      },
+      {
+        title: 'Digital Resilience & Redundancy',
+        description: 'Backup systems, data protection, and recovery plans.',
+        href: '/shield/digital-resilience',
+        track: 'operational-protection',
+      },
+      {
+        title: 'Platform & Dependency Risk',
+        description: 'Reduce lock-in and dependency on platforms you don\'t control.',
+        href: '/shield/platform-risk',
+        track: 'operational-protection',
+      },
+      {
+        title: 'Systems & SOPs for Protection',
+        description: 'Documented processes that protect you and your business.',
+        href: '/shield/systems-sops',
+        track: 'operational-protection',
+      },
     ],
   },
 ]
 
-export const gatewayComponents = [
+export const allHubs: ShieldHub[] = [
   gatewayHub,
-  { id: 'benefits-builder', title: 'The Solopreneur Benefits Builder', href: '/shield/benefits-builder', description: 'Build back sick pay, pension, insurance and more.', isMoat: true },
+  {
+    title: 'The Solopreneur Benefits Builder',
+    description: 'Build back sick pay, pension, insurance and more.',
+    href: '/shield/benefits-builder',
+    track: 'gateway',
+    isMoat: true,
+    badge: 'Gateway',
+  },
+  ...tracks.flatMap(t => t.hubs),
 ]
 
-export const allHubs = [gatewayHub, ...tracks.flatMap(t => t.hubs), ...gatewayComponents.filter(c => c.id !== gatewayHub.id)]
-
-export const moatHubs = allHubs.filter(h => h.isMoat)
+export const moatHubs = allHubs.filter(h => h.isMoat === true)
