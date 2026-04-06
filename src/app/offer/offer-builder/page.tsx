@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Package } from 'lucide-react'
 import EmailSignupForm from '@/components/EmailSignupForm'
+import OfferBuilderForm from '@/components/OfferBuilderForm'
 import CategoryHub from '@/components/CategoryHub'
 import { pillarMeta, gatewayHub } from '@/data/offer'
 
@@ -21,9 +22,11 @@ export default function OfferBuilderPage() {
       spokes={[]}
     >
       <section className="mt-8">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl space-y-6">
           <h2 className="text-2xl font-bold mb-4">Offer Builder Workbook (free)</h2>
           <p className="text-gray-600 mb-6">Fill in the template, validate with pre-sales, and iterate.</p>
+
+          <OfferBuilderForm />
 
           <div className="bg-white p-6 rounded-lg border border-gray-100">
             <EmailSignupForm variant="stacked" leadMagnetFile="/downloads/offer-builder.pdf" />
