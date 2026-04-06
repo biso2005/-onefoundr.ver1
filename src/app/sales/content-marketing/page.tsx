@@ -4,8 +4,8 @@ import { ArrowLeft, Clock, Zap } from 'lucide-react'
 import NewsletterCTA from '@/components/NewsletterCTA'
 
 export const metadata: Metadata = {
-  title: 'Content Marketing — OneFoundr',
-  description: 'Build authority and attract ideal customers through strategic content that educates, engages, and converts.',
+  title: 'Content Marketing',
+  description: 'Create content that attracts your ideal clients on autopilot.',
 }
 
 export default function ContentMarketingPage() {

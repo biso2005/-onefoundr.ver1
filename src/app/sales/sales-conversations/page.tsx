@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, Clock, Zap } from 'lucide-react'
+import { ArrowLeft, MessageCircle, Users } from 'lucide-react'
+import EmailSignupForm from '@/components/EmailSignupForm'
 import NewsletterCTA from '@/components/NewsletterCTA'
 
 export const metadata: Metadata = {
-  title: 'Sales Conversations — OneFoundr',
-  description: 'Master the art of discovery calls and sales conversations that feel natural, build trust, and close deals.',
+  title: 'Sales Conversations',
+  description: 'Frameworks and scripts to turn discovery conversations into paid clients (downloadable cheat sheet).',
 }
 
 export default function SalesConversationsPage() {
@@ -19,29 +20,52 @@ export default function SalesConversationsPage() {
           </Link>
 
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white text-sm font-medium mb-6">
-            <Zap className="w-4 h-4" />
-            <span>The Engine — Pillar 3</span>
+            <MessageCircle className="w-4 h-4" />
+            <span>The Engine — Sales Conversations (MOAT)</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Sales Conversations</h1>
 
-          <p className="text-xl text-gray-300 max-w-3xl">Master the art of discovery calls and sales conversations that feel natural, build trust, and close deals.</p>
+          <p className="text-xl text-gray-300 max-w-3xl">Simple frameworks, scripts, and objection-handling to close more discovery calls. Submit your email to download the cheat sheet.</p>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-gray-50 border-b border-gray-200">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 md:p-8">
+            <div className="flex gap-4 items-start">
+              <Users className="w-8 h-8 text-amber-600 shrink-0 mt-1" />
+              <div>
+                <p className="text-lg text-gray-900 mb-3"><strong>People buy from people who ask the right questions.</strong></p>
+                <p className="text-gray-600">Use an agenda, diagnose the real problem, and close with a clear next step. The downloadable cheat sheet includes scripts for discovery, pricing conversations, and follow-up.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="py-16 md:py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-100 mb-6">
-            <Clock className="w-8 h-8 text-amber-600" />
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Download the Sales Conversations Cheat Sheet</h2>
+
+          <div className="bg-white rounded-xl border p-6 md:p-8">
+            <p className="text-gray-700 mb-4">Enter your email below to receive the PDF with templates you can copy into your meetings and CRMs.</p>
+
+            <EmailSignupForm
+              variant="stacked"
+              placeholder="your@email.com"
+              buttonText="Send me the cheat sheet"
+              leadMagnetFile="/downloads/sales-conversations.pdf"
+            />
           </div>
+        </div>
+      </section>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Guide Coming Soon</h2>
-          <p className="text-lg text-gray-600 mb-8">We're crafting an in-depth guide on having effective sales conversations. Want to be notified when it's ready? Join our newsletter for updates and early access to new content.</p>
-
-          <Link href="/newsletter" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-shadow">
-            <span>Get Notified</span>
-            <ArrowLeft className="w-5 h-5 rotate-180" />
-          </Link>
+      <section className="py-16 md:py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl border-2 border-amber-200 p-8">
+            <p className="text-gray-600 text-sm"><strong>Use the scripts as a starting point, then make them your own.</strong> The goal is clear outcomes from every conversation.</p>
+          </div>
         </div>
       </section>
 
@@ -49,3 +73,4 @@ export default function SalesConversationsPage() {
     </div>
   )
 }
+
