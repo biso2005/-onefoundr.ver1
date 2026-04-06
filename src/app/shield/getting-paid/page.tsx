@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { ArrowRight, CheckCircle2, AlertCircle, Clock, DollarSign } from 'lucide-react'
 import NewsletterCTA from '@/components/NewsletterCTA'
+import EmailSignupForm from '@/components/EmailSignupForm'
 
 export const metadata: Metadata = {
   title: 'Getting Paid — The Complete Playbook',
@@ -237,6 +238,22 @@ export default function GettingPaidPage() {
           <div className="bg-white rounded-xl border-2 border-teal-200 p-8">
             <p className="text-lg text-gray-900 mb-2"><strong>The core principle:</strong></p>
             <p className="text-gray-600">Getting paid is not about being aggressive or uncomfortable. It's about clear systems, professional boundaries, and consequences. Clients who don't pay are choosing not to respect those boundaries. They're the exception — design your processes around the majority who will pay fairly.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl border border-gray-100 p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Get the Complete Getting Paid Playbook</h3>
+            <p className="text-gray-600 mb-6">A downloadable, email-gated guide containing the full playbook, templates, and chase sequences.</p>
+            <EmailSignupForm
+              variant="stacked"
+              buttonText="Get the full playbook"
+              placeholder="your@email.com"
+              successMessage="Thanks — the download is ready"
+              leadMagnetFile="/downloads/getting-paid-playbook.pdf"
+            />
           </div>
         </div>
       </section>

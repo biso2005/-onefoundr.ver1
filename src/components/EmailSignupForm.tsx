@@ -8,6 +8,7 @@ interface EmailSignupFormProps {
 	buttonText?: string
 	successMessage?: string
 	variant?: 'default' | 'inline' | 'stacked'
+    leadMagnetFile?: string
 }
 
 export default function EmailSignupForm({
@@ -15,6 +16,7 @@ export default function EmailSignupForm({
 	buttonText = 'Get Free Guides',
 	successMessage = 'You\'re in. Check your inbox.',
 	variant = 'inline',
+    leadMagnetFile,
 }: EmailSignupFormProps) {
 	const [email, setEmail] = useState('')
 	const [submitted, setSubmitted] = useState(false)
@@ -32,9 +34,20 @@ export default function EmailSignupForm({
 
 	if (submitted) {
 		return (
-			<div className="flex items-center gap-3 text-green-600 font-semibold">
-				<CheckCircle className="w-5 h-5 flex-shrink-0" />
-				<span>{successMessage}</span>
+			<div className="flex flex-col items-start gap-3">
+				<div className="flex items-center gap-3 text-green-600 font-semibold">
+					<CheckCircle className="w-5 h-5 flex-shrink-0" />
+					<span>{successMessage}</span>
+				</div>
+				{leadMagnetFile ? (
+					<a
+						href={leadMagnetFile}
+						download
+						className="mt-2 inline-flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg font-semibold"
+					>
+						Download the guide
+					</a>
+				) : null}
 			</div>
 		)
 	}
