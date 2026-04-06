@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, Package, Clock } from 'lucide-react'
+import { ArrowLeft, Search, Clock } from 'lucide-react'
 import NewsletterCTA from '@/components/NewsletterCTA'
 
 export const metadata: Metadata = {
-  title: 'Offer Packaging',
-  description: 'Design clear, attractive packaging for your offers to increase conversions.',
+  title: 'Validation Playbook',
+  description: 'Fast experiments and simple tests to validate demand before you build.',
 }
 
-export default function OfferPackagingPage() {
+export default function ValidationPage() {
   return (
     <div className="min-h-screen bg-white">
       <section className="bg-[#1A1A1A] text-white py-16 md:py-20">
@@ -19,12 +19,12 @@ export default function OfferPackagingPage() {
           </Link>
 
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-teal-700 to-emerald-500 text-white text-sm font-medium mb-6">
-            <Package className="w-4 h-4" />
-            <span>The Offer — Pillar 2</span>
+            <Search className="w-4 h-4" />
+            <span>The Offer — Validation</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Offer Packaging</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">Structure your deliverables, bonuses, and guarantees so buyers understand value at a glance.</p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Validation Playbook</h1>
+          <p className="text-xl text-gray-300 max-w-3xl">Practical experiments, landing page templates, and pre-sale scripts for quick validation.</p>
         </div>
       </section>
 
@@ -35,7 +35,7 @@ export default function OfferPackagingPage() {
           </div>
 
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Guide Coming Soon</h2>
-          <p className="text-lg text-gray-600 mb-8">Templates and real examples for packaging offers that sell.</p>
+          <p className="text-lg text-gray-600 mb-8">A step-by-step playbook to validate ideas without building a full product.</p>
 
           <Link
             href="/newsletter"

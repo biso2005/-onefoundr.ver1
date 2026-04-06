@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, Package, Clock } from 'lucide-react'
+import { ArrowLeft, ShieldCheck, Clock } from 'lucide-react'
 import NewsletterCTA from '@/components/NewsletterCTA'
 
 export const metadata: Metadata = {
-  title: 'Offer Packaging',
-  description: 'Design clear, attractive packaging for your offers to increase conversions.',
+  title: 'Bonuses & Guarantees',
+  description: 'Use bonuses and guarantees to reduce risk and increase conversions.',
 }
 
-export default function OfferPackagingPage() {
+export default function GuaranteesPage() {
   return (
     <div className="min-h-screen bg-white">
       <section className="bg-[#1A1A1A] text-white py-16 md:py-20">
@@ -19,12 +19,12 @@ export default function OfferPackagingPage() {
           </Link>
 
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-teal-700 to-emerald-500 text-white text-sm font-medium mb-6">
-            <Package className="w-4 h-4" />
-            <span>The Offer — Pillar 2</span>
+            <ShieldCheck className="w-4 h-4" />
+            <span>The Offer — Packaging</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Offer Packaging</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">Structure your deliverables, bonuses, and guarantees so buyers understand value at a glance.</p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Bonuses & Guarantees</h1>
+          <p className="text-xl text-gray-300 max-w-3xl">Design guarantees and value-add bonuses that remove buyer friction and increase conversions.</p>
         </div>
       </section>
 
@@ -35,7 +35,7 @@ export default function OfferPackagingPage() {
           </div>
 
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Guide Coming Soon</h2>
-          <p className="text-lg text-gray-600 mb-8">Templates and real examples for packaging offers that sell.</p>
+          <p className="text-lg text-gray-600 mb-8">Templates for guarantees, bonus stacks, and positioning offers to minimize buyer risk.</p>
 
           <Link
             href="/newsletter"
