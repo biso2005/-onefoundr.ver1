@@ -50,7 +50,7 @@ export default function TheLeveragePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold text-orange-500 uppercase tracking-wide mb-4">
-              Gateway Hub — Moat
+              Gateway Hub
             </p>
             <a
               href={gatewayHub.href}
@@ -107,8 +107,8 @@ export default function TheLeveragePage() {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-0.5">
                               <span className="text-sm font-medium text-gray-700 group-hover:text-orange-600 transition-colors">{hub.title}</span>
-                              {hub.isMoat && (
-                                <span className="px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold shrink-0">Moat</span>
+                              {hub.badge && (
+                                <span className="px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold shrink-0">{hub.badge}</span>
                               )}
                             </div>
                           </div>
@@ -124,21 +124,20 @@ export default function TheLeveragePage() {
         </div>
       </section>
 
-      {/* Moat highlights */}
+      {/* Featured highlights */}
       <section className="py-16 bg-gray-50 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">The moat pieces</h2>
-            <p className="text-gray-500">Content that exists nowhere else. Zero competition.</p>
-          </div>
+          <div className="mb-10" />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {moatHubs.map((hub) => (
               <a key={hub.href} href={hub.href} className="group bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md transition flex flex-col">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold">
-                    <Zap className="w-3 h-3" />
-                    {hub.badge ?? 'Moat'}
-                  </span>
+                    {hub.badge && (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold">
+                        <Zap className="w-3 h-3" />
+                        {hub.badge}
+                      </span>
+                    )}
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-500 transition-colors mb-2">{hub.title}</h3>
                 <p className="text-sm text-gray-500 flex-1 leading-relaxed">{hub.description}</p>

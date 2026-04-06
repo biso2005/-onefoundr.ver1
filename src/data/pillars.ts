@@ -126,4 +126,19 @@ export const pillars: Pillar[] = [
 			'Long-term Vision',
 		],
 	},
+	{
+		id: 'pillar4',
+		name: 'Pillar 4',
+		tagline: 'Pillar 4 — Scaffold',
+		description: 'Scaffolded pillar created from PILLAR 4 PDF. Replace with final content.',
+		href: '/pillar4',
+		icon: 'Archive',
+		gradient: 'from-slate-500 to-gray-700',
+		color: 'text-slate-600',
+		spokes: [
+			'Gateway',
+			'Track One',
+			'Track Two',
+		],
+	},
 ]

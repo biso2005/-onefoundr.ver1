@@ -58,9 +58,14 @@ export default function FoundationPage() {
       {/* Intro */}
       <section className="py-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
-            {pillarMeta.intro}
-          </p>
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold text-orange-500 uppercase tracking-wide mb-4">
+              Gateway Hub
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
+              {pillarMeta.description}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -115,22 +120,24 @@ export default function FoundationPage() {
         </div>
       </section>
 
-      {/* Gateway Hub — Moat 1 */}
+      {/* Gateway Hub */}
       <section className="py-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold text-orange-500 uppercase tracking-wide mb-4">
-              Gateway Hub — Moat
+              Gateway Hub
             </p>
             <Link
               href={gatewayHub.href}
               className="group block bg-gradient-to-r from-[#1A1A1A] to-gray-800 rounded-xl p-8 hover:shadow-lg transition border border-gray-700"
             >
               <div className="flex items-start justify-between mb-4">
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold">
-                  <Zap className="w-3 h-3" />
-                  {gatewayHub.badge}
-                </span>
+                  {gatewayHub.badge && (
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold">
+                      <Zap className="w-3 h-3" />
+                      {gatewayHub.badge}
+                    </span>
+                  )}
               </div>
               <h2 className="text-2xl font-bold text-white group-hover:text-orange-400 transition-colors mb-3">
                 {gatewayHub.title}
@@ -199,11 +206,11 @@ export default function FoundationPage() {
                               <span className="text-sm font-medium text-gray-700 group-hover:text-orange-600 transition-colors">
                                 {hub.title}
                               </span>
-                              {hub.isMoat && (
-                                <span className="px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold shrink-0">
-                                  Moat
-                                </span>
-                              )}
+                                {hub.badge && (
+                                  <span className="px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold shrink-0">
+                                    {hub.badge}
+                                  </span>
+                                )}
                             </div>
                           </div>
                           <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-orange-500 transition-colors shrink-0 mt-0.5" />
@@ -218,17 +225,10 @@ export default function FoundationPage() {
         </div>
       </section>
 
-      {/* Moat highlights */}
+      {/* Reference highlights */}
       <section className="py-16 bg-gray-50 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
-              The moat pieces
-            </h2>
-            <p className="text-gray-500">
-              Content that exists nowhere else. Zero competition.
-            </p>
-          </div>
+          <div className="mb-10" />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {moatHubs.map((hub) => (
               <Link
@@ -237,10 +237,12 @@ export default function FoundationPage() {
                 className="group bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md transition flex flex-col"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold">
-                    <Zap className="w-3 h-3" />
-                    {hub.badge ?? 'Moat'}
-                  </span>
+                    {hub.badge && (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold">
+                        <Zap className="w-3 h-3" />
+                        {hub.badge}
+                      </span>
+                    )}
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-500 transition-colors mb-2">
                   {hub.title}
