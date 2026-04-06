@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { useState } from 'react'
 import { Shield, TrendingUp, DollarSign, Heart, Umbrella, Clock, AlertCircle, CheckCircle2 } from 'lucide-react'
 import NewsletterCTA from '@/components/NewsletterCTA'
+import EmailSignupForm from '@/components/EmailSignupForm'
 
 export default function BenefitsBuilderPage() {
   const [monthlyIncome, setMonthlyIncome] = useState<number>(3000)
@@ -335,6 +336,23 @@ export default function BenefitsBuilderPage() {
           <div className="bg-white rounded-xl border-2 border-teal-200 p-8">
             <p className="text-lg text-gray-900 mb-4"><strong>The solopreneur benefit priority:</strong></p>
             <p className="text-gray-600">You cannot replicate an employer's total benefits package. You don't need to. Build in this order: (1) Income protection insurance, (2) Emergency fund (3 months), (3) Health insurance, (4) Pension (start small), (5) Life insurance if dependents, (6) Emergency fund to 6 months. Revisit annually.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Gated Benefits Audit CTA */}
+      <section className="py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl border border-gray-100 p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Get Your Benefits Audit Worksheet</h3>
+            <p className="text-gray-600 mb-6">Export your calculator results and receive a personalized benefits audit worksheet (email required). Identify your gaps and create an action plan.</p>
+            <EmailSignupForm
+              variant="stacked"
+              buttonText="Get your audit"
+              placeholder="your@email.com"
+              successMessage="Your audit worksheet is ready"
+              leadMagnetFile="/downloads/benefits-builder-audit.pdf"
+            />
           </div>
         </div>
       </section>

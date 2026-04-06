@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { AlertTriangle, Lock, Globe, CheckCircle2, Zap, Eye, BookOpen } from 'lucide-react'
 import NewsletterCTA from '@/components/NewsletterCTA'
+import EmailSignupForm from '@/components/EmailSignupForm'
 
 export const metadata: Metadata = {
   title: 'Legal Risk Library — Solopreneur Legal Radar',
@@ -299,6 +300,23 @@ export default function LegalRiskLibraryPage() {
           <div className="bg-white rounded-xl border-2 border-teal-200 p-8">
             <p className="text-lg text-gray-900 mb-4"><strong>Legal protection is about visibility and preparation:</strong></p>
             <p className="text-gray-600">You can't eliminate legal risk, but you can see it coming. Run the quarterly radar. Understand your platform dependencies. Clarify IP ownership in contracts. Know your international obligations. Most legal problems start small and grow. Early visibility lets you act before they become crises.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Gated Legal Radar CTA */}
+      <section className="py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl border border-gray-100 p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Get Your Quarterly Legal Radar</h3>
+            <p className="text-gray-600 mb-6">A solopreneur's quarterly legal checklist. Identify emerging risks, track regulatory changes, and protect your business before problems surface (email required).</p>
+            <EmailSignupForm
+              variant="stacked"
+              buttonText="Get your radar"
+              placeholder="your@email.com"
+              successMessage="Your legal radar checklist is ready"
+              leadMagnetFile="/downloads/legal-risk-radar.pdf"
+            />
           </div>
         </div>
       </section>
