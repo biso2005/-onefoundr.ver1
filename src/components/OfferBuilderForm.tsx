@@ -11,6 +11,8 @@ export default function OfferBuilderForm() {
 
   const [templateName, setTemplateName] = useState('')
   const [templates, setTemplates] = useState<Record<string, any>[]>([])
+  const [syncKey, setSyncKey] = useState('')
+  const [syncing, setSyncing] = useState(false)
 
   const STORAGE_KEY = 'offer-builder-templates'
 
@@ -79,6 +81,40 @@ export default function OfferBuilderForm() {
   function deleteTemplate(name: string) {
     const next = templates.filter((x) => x.name !== name)
     saveTemplates(next)
+  }
+
+  async function syncToServer() {
+    setSyncing(true)
+    try {
+      const res = await fetch('/api/templates', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-api-key': syncKey || '' },
+        body: JSON.stringify({ templates }),
+      })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json?.error || 'sync failed')
+      alert('Templates synced to server')
+    } catch (e: any) {
+      alert('Sync failed: ' + (e?.message || e))
+    } finally {
+      setSyncing(false)
+    }
+  }
+
+  async function loadFromServer() {
+    setSyncing(true)
+    try {
+      const res = await fetch('/api/templates', { headers: { 'x-api-key': syncKey || '' } })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json?.error || 'load failed')
+      const incoming = json?.templates || []
+      saveTemplates(incoming)
+      alert('Templates loaded from server')
+    } catch (e: any) {
+      alert('Load failed: ' + (e?.message || e))
+    } finally {
+      setSyncing(false)
+    }
   }
 
   return (
@@ -174,6 +210,21 @@ export default function OfferBuilderForm() {
             />
             <button onClick={saveTemplate} className="px-3 py-2 bg-teal-600 text-white rounded-md">
               Save
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2 mb-3">
+            <input
+              value={syncKey}
+              onChange={(e) => setSyncKey(e.target.value)}
+              placeholder="Optional sync key"
+              className="flex-1 rounded-md border-gray-200 shadow-sm p-2"
+            />
+            <button onClick={syncToServer} disabled={syncing} className="px-3 py-2 bg-blue-600 text-white rounded-md">
+              {syncing ? 'Syncing…' : 'Sync to server'}
+            </button>
+            <button onClick={loadFromServer} disabled={syncing} className="px-3 py-2 border rounded-md">
+              {syncing ? 'Loading…' : 'Load from server'}
             </button>
           </div>
 
