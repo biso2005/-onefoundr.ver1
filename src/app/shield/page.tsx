@@ -1,158 +1,161 @@
 import type { Metadata } from 'next'
-import {
-  Shield,
-  Umbrella,
-  FileCheck,
-  Receipt,
-  PiggyBank,
-  Building,
-  TrendingDown,
-  Heart,
-  DollarSign,
-  AlertTriangle,
-  Lightbulb,
-  Lock,
-  Zap,
-} from 'lucide-react'
-import CategoryHub from '@/components/CategoryHub'
+import Link from 'next/link'
+import { Shield, Zap, Umbrella, FileCheck, Receipt, PiggyBank, Building, TrendingDown, Heart, DollarSign, AlertTriangle, Lightbulb, Lock } from 'lucide-react'
+import NewsletterCTA from '@/components/NewsletterCTA'
+import { pillarMeta, gatewayHub, tracks, moatHubs } from '@/data/shield'
 
 export const metadata: Metadata = {
-  title: 'The Shield — Stay Protected',
-  description:
-    'Protect your income, your business, and your sanity. The boring stuff that saves you later.',
+  title: `${pillarMeta.title} — ${pillarMeta.tagline} | OneFoundr`,
+  description: pillarMeta.description,
+}
+
+const trackIcons: Record<string, any> = {
+  'financial-protection': DollarSign,
+  'legal-protection': FileCheck,
+  'operational-protection': Zap,
+}
+
+const trackGradients: Record<string, string> = {
+  'financial-protection': 'from-emerald-600 to-teal-700',
+  'legal-protection': 'from-orange-500 to-amber-500',
+  'operational-protection': 'from-cyan-600 to-teal-700',
 }
 
 export default function TheShieldPage() {
   return (
-    <CategoryHub
-      title="The Shield"
-      tagline="Pillar 4 — Stay Protected"
-      description="Nobody talks about protection until something goes wrong. Then it is too late. This section covers the financial, legal, operational, and mental protection every solo founder needs."
-      icon={Shield}
-      gradient="from-teal-600 to-teal-800"
-      intro="Solo founders are exposed in ways employees never are. One bad client, one missed tax payment, one health crisis — and the whole thing can collapse. The Shield is not glamorous. But it is what lets you keep going when things get hard."
-      spokes={[
-        {
-          title: 'Business Insurance',
-          description:
-            'What cover you actually need as a solo founder — and what is just expensive peace of mind you can skip.',
-          href: '/shield/business-insurance',
-          icon: Umbrella,
-          gradient: 'from-teal-600 to-teal-800',
-          badge: 'Essential',
-        },
-        {
-          title: 'Contracts',
-          description:
-            'Protect yourself with the right contracts. Templates and guidance for client agreements, NDAs, and more.',
-          href: '/shield/contracts',
-          icon: FileCheck,
-          gradient: 'from-orange-500 to-amber-500',
-          badge: 'Templates',
-        },
-        {
-          title: 'Tax Planning',
-          description:
-            'Keep more of what you earn. Legal tax strategies for solo founders — before your accountant tells you it is too late.',
-          href: '/shield/tax-planning',
-          icon: Receipt,
-          gradient: 'from-amber-500 to-orange-600',
-        },
-        {
-          title: 'Emergency Fund',
-          description:
-            'How much runway you actually need and how to build it — so a slow month does not become a crisis.',
-          href: '/shield/emergency-fund',
-          icon: PiggyBank,
-          gradient: 'from-teal-700 to-emerald-500',
-          badge: 'Peace of Mind',
-        },
-        {
-          title: 'Legal Structure',
-          description:
-            'Sole trader, LLC, or limited company? The right structure for your stage — with real trade-offs explained.',
-          href: '/shield/legal-structure',
-          icon: Building,
-          gradient: 'from-orange-400 to-rose-500',
-        },
-        {
-          title: 'Cash Flow',
-          description:
-            'Profitable but broke is a real thing. Manage your cash flow so you never miss payroll — even if payroll is just you.',
-          href: '/shield/cash-flow',
-          icon: TrendingDown,
-          gradient: 'from-amber-400 to-teal-600',
-          badge: 'Critical',
-        },
-        {
-          title: 'Mental Health',
-          description:
-            'Solo founder burnout is real. Protect your mental health before it becomes your biggest business risk.',
-          href: '/shield/mental-health',
-          icon: Heart,
-          gradient: 'from-teal-600 to-emerald-400',
-        },
-        {
-          title: 'Tax Efficiency & Compliance',
-          description:
-            'Minimize your tax burden legally. Deductions, business structure, and quarterly planning you should do now.',
-          href: '/shield/tax-efficiency',
-          icon: Receipt,
-          gradient: 'from-amber-500 to-orange-600',
-          badge: 'Strategy',
-        },
-        {
-          title: 'Concentration Risk',
-          description:
-            'Audit your exposure. One client failure or platform change should not kill your business.',
-          href: '/shield/concentration-risk',
-          icon: AlertTriangle,
-          gradient: 'from-emerald-600 to-teal-700',
-        },
-        {
-          title: 'Pricing for Protection',
-          description:
-            'Price from a position of strength. Use this formula to protect margin, taxes, and sick days.',
-          href: '/shield/pricing-protection',
-          icon: DollarSign,
-          gradient: 'from-amber-400 to-orange-500',
-          badge: 'Formula',
-        },
-        {
-          title: 'Intellectual Property',
-          description:
-            'Protect your unique methods, frameworks, and brand from being copied.',
-          href: '/shield/intellectual-property',
-          icon: Lightbulb,
-          gradient: 'from-orange-500 to-amber-600',
-        },
-        {
-          title: 'Digital Resilience',
-          description:
-            'Backups, encryption, and account security. Survive a laptop failure or data breach in 7 days.',
-          href: '/shield/digital-resilience',
-          icon: Lock,
-          gradient: 'from-cyan-600 to-teal-700',
-          badge: '7-Day Setup',
-        },
-        {
-          title: 'Platform Risk',
-          description:
-            'Map your dependencies. Know what breaks your business if a platform fails or bans you.',
-          href: '/shield/platform-risk',
-          icon: AlertTriangle,
-          gradient: 'from-rose-600 to-orange-500',
-        },
-        {
-          title: 'Systems & SOPs',
-          description:
-            'Document your workflows. Build systems that work without you, so you can scale or rest.',
-          href: '/shield/systems-sops',
-          icon: Zap,
-          gradient: 'from-slate-600 to-slate-800',
-          badge: 'Playbook',
-        },
-      ]}
-    />
+    <div className="min-h-screen bg-white">
+
+      {/* Dark Hero */}
+      <section className="relative overflow-hidden bg-[#1A1A1A] pt-16 pb-20 md:pt-24 md:pb-28">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className={`absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gradient-to-br ${pillarMeta.gradient} opacity-10 blur-3xl`} />
+          <div className={`absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-br ${pillarMeta.gradient} opacity-10 blur-3xl`} />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-4 mb-6">
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${pillarMeta.gradient} flex items-center justify-center`}>
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-sm font-semibold text-gray-400 uppercase tracking-wider">{pillarMeta.tagline}</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">{pillarMeta.title}</h1>
+
+            <p className="text-xl text-gray-400 leading-relaxed max-w-2xl">{pillarMeta.description}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Intro */}
+      <section className="py-12 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">{pillarMeta.intro}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Spokes Grid (everything in this section) */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-10">Everything in this section</h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            { ( [gatewayHub, ...tracks.flatMap(t => t.hubs)] ).map((hub) => {
+                const Icon = trackIcons[hub.track] ?? Umbrella
+                const gradient = trackGradients[hub.track] ?? pillarMeta.gradient
+                return (
+                  <Link key={hub.href} href={hub.href} className="group bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-lg hover:border-gray-200 transition-all duration-200 flex flex-col">
+                    <div className="mb-4">
+                      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} mb-3`}>
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+
+                    {hub.badge && (
+                      <span className="inline-block text-xs font-semibold bg-orange-50 text-orange-600 px-3 py-1 rounded-full mb-3 w-fit">{hub.badge}</span>
+                    )}
+
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-orange-500 transition-colors">{hub.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed flex-1">{hub.description}</p>
+
+                    <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-gray-400 group-hover:text-orange-500 transition-colors">
+                      <span>Read guide</span>
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </div>
+                  </Link>
+                )
+            }) }
+          </div>
+        </div>
+      </section>
+
+      {/* Tracks (detailed) */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Three tracks</h2>
+            <p className="text-gray-500 max-w-2xl">Work through them in order or go directly to what you need right now.</p>
+          </div>
+
+          <div className="space-y-10">
+            {tracks.map((track) => {
+              const Icon = trackIcons[track.id] ?? Umbrella
+              const gradient = trackGradients[track.id] ?? pillarMeta.gradient
+              return (
+                <div key={track.id} className="bg-white rounded-xl border border-gray-100 p-6 md:p-8 hover:shadow-md transition">
+                  <div className="flex flex-col md:flex-row md:items-start gap-6">
+                    <div className="md:w-64 shrink-0">
+                      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} mb-4`}>
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Track {track.number}</div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{track.title}</h3>
+                      <p className="text-sm text-gray-500">{track.description}</p>
+                    </div>
+
+                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {track.hubs.map((hub) => (
+                        <Link key={hub.href} href={hub.href} className="group flex items-start justify-between gap-3 bg-gray-50 hover:bg-orange-50 rounded-lg px-4 py-3 transition-colors">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-0.5">
+                              <span className="text-sm font-medium text-gray-700 group-hover:text-orange-600 transition-colors">{hub.title}</span>
+                              {hub.badge && (<span className="px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold shrink-0">{hub.badge}</span>)}
+                            </div>
+                          </div>
+                          <svg className="w-3.5 h-3.5 text-gray-400 group-hover:text-orange-500 transition-colors shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Reference highlights (moat hubs) */}
+      <section className="py-16 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {moatHubs.map((hub) => (
+              <Link key={hub.href} href={hub.href} className="group bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md transition flex flex-col">
+                <div className="flex items-center gap-2 mb-4">
+                  {hub.badge && (<span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-semibold">{hub.badge}</span>)}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-500 transition-colors mb-2">{hub.title}</h3>
+                <p className="text-sm text-gray-500 flex-1 leading-relaxed">{hub.description}</p>
+                <div className="flex items-center gap-1 mt-5 text-orange-500 text-sm font-semibold"><span>Read the guide</span></div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <NewsletterCTA />
+    </div>
   )
 }
