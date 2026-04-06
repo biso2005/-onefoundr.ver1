@@ -11,7 +11,6 @@ import {
 } from 'lucide-react'
 import CategoryHub from '@/components/CategoryHub'
 import { pillarMeta as leverageMeta, gatewayHub, tracks, moatHubs } from '@/data/leverage'
-import NewsletterCTA from '@/components/NewsletterCTA'
 import { Anchor, ArrowRight, Zap } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -153,8 +152,7 @@ export default function TheLeveragePage() {
         </div>
       </section>
 
-      <NewsletterCTA />
-
+      
     </CategoryHub>
   )
 }
