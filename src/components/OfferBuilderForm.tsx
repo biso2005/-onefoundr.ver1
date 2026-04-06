@@ -9,6 +9,29 @@ export default function OfferBuilderForm() {
   const [price, setPrice] = useState('')
   const [preview, setPreview] = useState(false)
 
+  const [templateName, setTemplateName] = useState('')
+  const [templates, setTemplates] = useState<Record<string, any>[]>([])
+
+  const STORAGE_KEY = 'offer-builder-templates'
+
+  React.useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY)
+      if (raw) setTemplates(JSON.parse(raw))
+    } catch (e) {
+      // ignore
+    }
+  }, [])
+
+  const saveTemplates = (next: Record<string, any>[]) => {
+    setTemplates(next)
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
+    } catch (e) {
+      // ignore
+    }
+  }
+
   const summaryText = () => {
     return `Offer Summary:\n\nOutcome:\n${outcome || '-'}\n\nDeliverables:\n${deliverables || '-'}\n\nScope:\n${scope || '-'}\n\nEstimated hours: ${hours || '-'}\nPrice: ${price || '-'}\n`
   }
@@ -33,6 +56,29 @@ export default function OfferBuilderForm() {
     a.download = 'offer-builder.json'
     a.click()
     URL.revokeObjectURL(url)
+  }
+
+  function saveTemplate() {
+    const name = templateName.trim() || `Template ${new Date().toISOString()}`
+    const t = { name, outcome, deliverables, scope, hours, price, createdAt: new Date().toISOString() }
+    const next = [t, ...templates.filter((x) => x.name !== name)]
+    saveTemplates(next)
+    setTemplateName('')
+  }
+
+  function loadTemplate(name: string) {
+    const t = templates.find((x) => x.name === name)
+    if (!t) return
+    setOutcome(t.outcome || '')
+    setDeliverables(t.deliverables || '')
+    setScope(t.scope || '')
+    setHours(t.hours || '')
+    setPrice(t.price || '')
+  }
+
+  function deleteTemplate(name: string) {
+    const next = templates.filter((x) => x.name !== name)
+    saveTemplates(next)
   }
 
   return (
@@ -115,6 +161,42 @@ export default function OfferBuilderForm() {
             <pre className="whitespace-pre-wrap text-sm text-gray-800">{summaryText()}</pre>
           </div>
         )}
+
+        {/* Templates UI */}
+        <div className="mt-4 border-t pt-4">
+          <h4 className="text-sm font-medium mb-2">Templates</h4>
+          <div className="flex gap-2 mb-3">
+            <input
+              value={templateName}
+              onChange={(e) => setTemplateName(e.target.value)}
+              placeholder="Template name"
+              className="flex-1 rounded-md border-gray-200 shadow-sm p-2"
+            />
+            <button onClick={saveTemplate} className="px-3 py-2 bg-teal-600 text-white rounded-md">
+              Save
+            </button>
+          </div>
+
+          <div className="space-y-2">
+            {templates.length === 0 && <p className="text-sm text-gray-500">No templates saved yet.</p>}
+            {templates.map((t) => (
+              <div key={t.name} className="flex items-center justify-between bg-white p-2 rounded-md border">
+                <div className="text-sm">
+                  <div className="font-medium">{t.name}</div>
+                  <div className="text-xs text-gray-500">{new Date(t.createdAt).toLocaleString()}</div>
+                </div>
+                <div className="flex gap-2">
+                  <button onClick={() => loadTemplate(t.name)} className="px-2 py-1 border rounded-md text-sm">
+                    Load
+                  </button>
+                  <button onClick={() => deleteTemplate(t.name)} className="px-2 py-1 border rounded-md text-sm">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
